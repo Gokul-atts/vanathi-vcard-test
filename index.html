@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vanathi-v-card</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+  if (!localStorage.getItem("visited")) {
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      confetti({
+        particleCount: 50,
+        spread: 100,
+        origin: { x: Math.random(), y: 0.6 },
+      });
+    }, 250);
+
+    localStorage.setItem("visited", "true");
+  }
+</script>
+
+</html>
